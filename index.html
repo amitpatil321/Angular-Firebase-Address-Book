@@ -1,0 +1,64 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Address Book</title>
+	<!-- Bootstrap Material  -->
+	<!-- Material Design fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="assets/css/bootstrap-material-design.min.css">
+	<link rel="stylesheet" href="assets/css/ripples.min.css">
+	
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>	<script src="assets/js/ripples.min.js"></script>	
+	<script src="assets/js/material.min.js"></script>	
+
+
+	<script src="assets/js/angular.min.js"></script>	
+	<script src="assets/js/angular-ui-router.js"></script>	
+
+	<!-- Firebase -->
+	<script src="assets/js/firebase.js"></script>
+
+	<!-- AngularFire -->
+	<script src="assets/js/angularfire.min.js"></script>
+	
+
+	<link href="assets/css/style.css" rel="stylesheet">
+    <script src="app/app.js"></script>
+    <script src="app/firebase.service.js"></script>
+    <script src="app/controller.js"></script>
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="contactbookApp" class="container">
+
+<div class="row main" ui-view>
+</div>
+
+</body>
+</html>
+
+<script>
+  // Initialize Firebase
+  var config = {
+  	apiKey: "AIzaSyBB0MVxxZB1Bo0VGS2DDLNnp3TXS-sqh1Q",
+  	authDomain: "addressbook-dfbb1.firebaseapp.com",
+  	databaseURL: "https://addressbook-dfbb1.firebaseio.com",
+  	storageBucket: "addressbook-dfbb1.appspot.com",
+  	messagingSenderId: "833825884981"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+	$(function () {
+		$.material.init();
+	});
+</script>
