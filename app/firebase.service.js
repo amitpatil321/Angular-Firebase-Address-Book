@@ -6,29 +6,23 @@ cbApp.service('firebaseService',["$firebaseArray", "$filter", function ($firebas
 	var contacts = {};
 	
 	// Return all contacts
-	var all = function(){
+	var getAll = function(){
 		return fbArray.$loaded();
 	};
 	
 	// Find contact by id	
-	var get = function(id){
+	var getOne = function(id){
 		//return $filter('filter')(contacts, {id: id})[0];
 		return fbArray.$getRecord(id);
 	};		
 
-	// Find index od contact in list by id	
-	var getIndex = function(id){
-		//return $filter('filter')(contacts, {id: id})[0];
-		return fbArray.$indexFor(id);
-	};	
-
 	// Add contact
-	var add = function(info){
+	var addContact = function(info){
 		return fbArray.$add(info);
 	};
 	
 	// Update contact details
-	var update = function(newInfo,id){
+	var updateContact = function(newInfo,id){
 		var index         = fbArray.$indexFor(id);
 		fbArray[index]    = newInfo;
 		fbArray[index].id = id;
@@ -37,18 +31,17 @@ cbApp.service('firebaseService',["$firebaseArray", "$filter", function ($firebas
 	};
 
 	// Remove contact
-	var remove = function(id){
+	var removeContact = function(id){
 		var index     = fbArray.$indexFor(id);
 		return fbArray.$remove(index);		
 	};
 
 	// return methods
     return {
-		all     : all,
-		get     : get,
-		getIndex: getIndex,
-		add     : add,
-		update  : update,
-		remove  : remove
+		getAll       : getAll,
+		getOne       : getOne,
+		addContact   : addContact,
+		updateContact: updateContact,
+		removeContact: removeContact
     };
 }]);

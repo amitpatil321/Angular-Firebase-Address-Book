@@ -1,7 +1,7 @@
 <div ng-if="!contacts.$resolved" class="text-center"><h3>Loading...Please wait.</h3>
 </div>
 	
-<div class="col-md-4">
+<div class="col-md-4" ng-if="contacts.$resolved">
 	<div class="list-group contact-list">
 		<div class="list-group-item search">
 			<div class="form-group label-floating">
@@ -10,22 +10,24 @@
 			</div>							
 		</div>
 		<div class="spacer"></div>
-		<div class="list-group-item" ng-repeat-start="contact in contacts | filter : search | orderBy : 'name' track by $index">
+		<div 
+			class="list-group-item" 
+			ng-repeat-start="contact in contacts | filter : search | orderBy : 'name'" 
+			ui-sref="home.details({id : contact.$id })"
+			>
 			<div class="row-picture">
-				<img class="circle" src="http://lorempixel.com/56/56/people/{{$index}}" alt="icon">
+				<user-pic imageid='{{contact.pic}}'></user-pic>
 			</div>
 			<div class="row-content">
 				<h4 class="list-group-item-heading">
-					<a ui-sref="home.details({id : contact.$id })">
-						{{contact.name}}
-					</a>	
+					{{contact.name}}
 				</h4>
 
 				<p class="list-group-item-text">{{contact.mobile}}</p>
 			</div>
 		</div>
 		<div ng-repeat-end class="list-group-separator"></div>
-		<a href="javascript:void(0)" class="btn btn-info btn-fab add-new" ng-click="editing=true; add();"><i class="material-icons">add</i></a>
+		<a ui-sref="home.add" class="btn btn-info btn-fab add-new"><i class="material-icons">add</i></a>
 	</div>
 
 </div>
