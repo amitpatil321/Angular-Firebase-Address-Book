@@ -10,9 +10,8 @@ cbApp.service('firebaseService',["$firebaseArray", "$filter", function ($firebas
 		return fbArray.$loaded();
 	};
 	
-	// Find contact by id	
+	// Return single contact details	
 	var getOne = function(id){
-		//return $filter('filter')(contacts, {id: id})[0];
 		return fbArray.$getRecord(id);
 	};		
 

@@ -8,14 +8,13 @@ cbApp.directive('userPic', function(appConstants) {
       imageid: '@'
     },
     link: function(scope, elem, attr){
-		scope.$watch('imageid', function(value) {
-	    	if(scope.imageid){
-	    		scope.imgsrc = 'https://randomuser.me/api/portraits/men/'+value+'.jpg';
-	    	}
-	    	else
-	    		scope.imgsrc = appConstants.default_pic;
-		});
-
+  		scope.$watch('imageid', function(value) {
+  	    	if(scope.imageid){
+  	    		scope.imgsrc = 'https://randomuser.me/api/portraits/men/'+value+'.jpg';
+  	    	}
+  	    	else
+  	    		scope.imgsrc = appConstants.default_pic;
+  		});
     },
     replace: true   
   };

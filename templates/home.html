@@ -10,10 +10,13 @@
 			</div>							
 		</div>
 		<div class="spacer"></div>
+		
+		<div class="list-group-item" ng-if="!contacts.length">Start adding contacts</div> 
+
 		<div 
 			class="list-group-item" 
 			ng-repeat-start="contact in contacts | filter : search | orderBy : 'name'" 
-			ui-sref="home.details({id : contact.$id })"
+			ui-sref="home.details({id : contact.$id , msg: ''})"
 			>
 			<div class="row-picture">
 				<user-pic imageid='{{contact.pic}}'></user-pic>

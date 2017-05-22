@@ -26,7 +26,7 @@ cbApp.controller("detailsCtrl",[
 	$scope.id      = $stateParams.id;
 	// msg variables receives its values from previous actions 
 	$scope.msg     = $stateParams.msg;
-	// Get contact details
+	// Fetch single contact
 	$scope.contact = firebaseService.getOne($scope.id);
 
 	// Delete contact
@@ -38,7 +38,7 @@ cbApp.controller("detailsCtrl",[
 			$scope.msg = {type : "error","msg" : "Argg, Something went wrong!"};
 		});
 	}
-	$scope.msg = "";
+
 }]);
 
 cbApp.controller("editCtrl",[
@@ -93,7 +93,6 @@ cbApp.controller("addCtrl",[
 			
 			// Save contact
 			firebaseService.addContact($scope.contact).then(function(response){
-				//console.log(response);
 				$scope.msg     = {type : "success","msg" : "Contact added"};
 				// fill contact object with new info
 				$state.go('home.details', { id : response.key, msg : $scope.msg}, {reload: true, inherit : false});
